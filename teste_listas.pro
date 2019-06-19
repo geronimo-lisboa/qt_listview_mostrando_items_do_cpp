@@ -6,7 +6,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainViewModel.cpp \
-        myData.cpp
+        myData.cpp \
+        qmLlistPropertyAdapter.cpp
 
 RESOURCES += qml.qrc
 
@@ -21,4 +22,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     mainViewModel.h \
-    myData.h
+    myData.h \
+    qmLlistPropertyAdapter.h

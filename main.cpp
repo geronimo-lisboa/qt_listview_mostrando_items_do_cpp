@@ -1,6 +1,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "myData.h"
+#include "mainViewModel.h"
+
+void registerTypesInQML()
+{
+    qmlRegisterType<MyData>("don.geronimo",1,0, "MyData");
+    qmlRegisterType<MainViewModel>("don.geronimo",1,0, "MainViewModel");
+}
 
 int main(int argc, char *argv[])
 {
@@ -8,7 +15,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<MyData>("don.geronimo",1,0, "MyData");
+    registerTypesInQML();
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));

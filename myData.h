@@ -16,6 +16,7 @@ class MyData : public QObject
                NOTIFY idChanged)
 public:
     explicit MyData(QObject *parent = nullptr);
+    explicit MyData(const int id, const QString val, QObject *parent = nullptr);
     QString value();
     void setValue(const QString &val);
     int id();

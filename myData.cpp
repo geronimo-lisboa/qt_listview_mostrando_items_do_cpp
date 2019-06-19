@@ -5,6 +5,14 @@ MyData::MyData(QObject *parent) : QObject(parent)
 
 }
 
+MyData::MyData(const int id, const QString val, QObject *parent):
+    QObject (parent),
+    m_value(val),
+    m_id(id)
+{
+
+}
+
 QString MyData::value()
 {
     return m_value;
