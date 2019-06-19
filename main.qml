@@ -3,6 +3,7 @@ import QtQuick.Window 2.12
 import don.geronimo 1.0
 import QtQuick.Controls 2.3
 import QtQuick.Controls.Material 2.0
+import QtQuick.Layouts 1.0
 
 
 ApplicationWindow {
@@ -16,82 +17,88 @@ ApplicationWindow {
         id:viewModel
     }
 
-    Pane {
 
-    }
 
 
     Frame {
         id: frame
         anchors.fill: parent
 
-        ListView {
-            id: listView
+        ColumnLayout {
             x: 25
-            y: 56
-            width: 408
-            height: 344
-            model: viewModel.datas
-            delegate: Item {
-                x: 5
-                width: 80
-                height: 40
-                Row {
-                    id: row1
-                    spacing: 10
-                    Text {
-                        text: id
+            y: 0
+
+            RowLayout {
+
+                TextEdit {
+                    id: edtId
+                    Layout.preferredHeight: 20
+                    Layout.preferredWidth: 80
+                    font.pixelSize: 12
+                    property string placeholder: "Informe o id..."
+                    Layout.fillWidth: true
+                    Text{
+                        text:edtId.placeholder
+                        color:"#aaa"
+                        visible: !edtId.text && !edtId.activeFocus
                     }
-                    Text {
-                        text: value
+                }
+
+                TextEdit {
+                    id: edtValue
+                    Layout.preferredHeight: 20
+                    Layout.preferredWidth: 80
+                    font.pixelSize: 12
+                    property string placeholder: "informe o valor..."
+                    Layout.fillWidth: true
+                    Text{
+                        text:edtValue.placeholder
+                        color:"#aaa"
+                        visible: !edtValue.text && !edtValue.activeFocus
                     }
-                    Button{
-                        icon.source: "round_clear_black_18dp.png"
-                        onClicked: {
-                            viewModel.deleteData(id)
-                        }
+                }
+
+                Button {
+                    id: button
+                    Layout.maximumHeight: 40
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
+                    Layout.maximumWidth: 40
+                    Layout.minimumWidth: 40
+                    Layout.preferredWidth: 40
+                    icon.source: "round_add_black_18dp.png"
+                    onClicked: {
+                        viewModel.addData(edtId.text, edtValue.text)
                     }
                 }
             }
-        }
 
-        Button {
-            id: button
-            x: 88
-            y: 0
-            icon.source: "round_add_black_18dp.png"
-            onClicked: {
-                viewModel.addData(edtId.text, edtValue.text)
-            }
-        }
-
-        TextEdit {
-            id: edtId
-            x: 214
-            y: 10
-            width: 80
-            height: 20
-            font.pixelSize: 12
-            property string placeholder: "Informe o id..."
-            Text{
-                text:edtId.placeholder
-                color:"#aaa"
-                visible: !edtId.text && !edtId.activeFocus
-            }
-        }
-
-        TextEdit {
-            id: edtValue
-            x: 325
-            y: 10
-            width: 80
-            height: 20
-            font.pixelSize: 12
-            property string placeholder: "informe o valor..."
-            Text{
-                text:edtValue.placeholder
-                color:"#aaa"
-                visible: !edtValue.text && !edtValue.activeFocus
+            ListView {
+                id: listView
+                Layout.preferredHeight: 344
+                Layout.preferredWidth: 408
+                model: viewModel.datas
+                delegate: Item {
+                    x: 5
+                    width: 80
+                    height: 40
+                    Row {
+                        id: row1
+                        spacing: 10
+                        Text {
+                            text: id
+                        }
+                        Text {
+                            text: value
+                        }
+                        Button{
+                            icon.source: "round_clear_black_18dp.png"
+                            onClicked: {
+                                viewModel.deleteData(id)
+                            }
+                        }
+                    }
+                }
             }
         }
     }
