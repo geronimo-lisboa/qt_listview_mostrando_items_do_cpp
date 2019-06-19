@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQuickStyle>
 #include "myData.h"
 #include "mainViewModel.h"
 
@@ -14,7 +15,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
-
+    QQuickStyle::setStyle("Material");
     registerTypesInQML();
 
     QQmlApplicationEngine engine;

@@ -38,7 +38,7 @@ Window {
                         text: value
                     }
                     Button{
-                        text: "delete"
+                        icon.source: "round_clear_black_18dp.png"
                         onClicked: {
                             viewModel.deleteData(id)
                         }
@@ -51,7 +51,7 @@ Window {
             id: button
             x: 88
             y: 0
-            text: qsTr("Adicionar")
+            icon.source: "round_add_black_18dp.png"
             onClicked: {
                 viewModel.addData(edtId.text, edtValue.text)
             }

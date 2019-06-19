@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>round_add_black_18dp.png</file>
+        <file>round_clear_black_18dp.png</file>
     </qresource>
 </RCC>
