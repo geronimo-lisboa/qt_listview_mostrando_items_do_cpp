@@ -17,9 +17,6 @@ ApplicationWindow {
         id:viewModel
     }
 
-
-
-
     Frame {
         id: frame
         anchors.fill: parent
@@ -29,7 +26,6 @@ ApplicationWindow {
             y: 0
 
             RowLayout {
-
                 TextEdit {
                     id: edtId
                     Layout.preferredHeight: 20
@@ -78,18 +74,22 @@ ApplicationWindow {
                 Layout.preferredHeight: 344
                 Layout.preferredWidth: 408
                 model: viewModel.datas
-                delegate: Item {
-                    x: 5
-                    width: 80
-                    height: 40
-                    Row {
-                        id: row1
+                delegate: Pane {
+                    width: parent.width
+                    Material.elevation: 8
+                    RowLayout {
                         spacing: 10
+                        width: parent.width
                         Text {
                             text: id
+                            font.pixelSize: 12
+                            Layout.fillWidth: true
+
                         }
                         Text {
                             text: value
+                            font.pixelSize: 12
+                            Layout.fillWidth: true
                         }
                         Button{
                             icon.source: "round_clear_black_18dp.png"
@@ -98,6 +98,7 @@ ApplicationWindow {
                             }
                         }
                     }
+
                 }
             }
         }
