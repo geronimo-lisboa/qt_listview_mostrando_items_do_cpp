@@ -8,14 +8,13 @@ MainViewModel::MainViewModel(QObject *parent) : QObject(parent)
 
 QQmlListProperty<MyData> MainViewModel::data()
 {
-//    QQmlListProperty<MyData> property = QQmlListProperty<MyData>(this, m_dataListAsPtr);
-//    return property;
     return m_dataListAdapter.getAdaptedValue();
 }
 
 void MainViewModel::setData(const QList<std::shared_ptr<MyData>> &data)
 {
     m_dataList = data;
+    m_dataListAdapter.setData(m_dataList);
     emit dataChanged();
 }
 
@@ -25,9 +24,19 @@ void MainViewModel::addData(const QString &id, const QString &value)
         return;
     }
     std::shared_ptr<MyData> newData = std::make_shared<MyData>(id.toInt(),
-                                                               value);
+                                                               value, this);
     m_dataList.append(newData);
-    m_dataListAdapter.setData(m_dataList);
+    setData(m_dataList);
+}
+
+void MainViewModel::deleteData(int id)
+{
+    for(int i=0; i<m_dataList.count(); i++){
+        if(m_dataList[i]->id()==id){
+            m_dataList.removeAt(i);
+            break;
+        }
+    }
     setData(m_dataList);
 }
 

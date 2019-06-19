@@ -37,6 +37,12 @@ Window {
                     Text {
                         text: value
                     }
+                    Button{
+                        text: "delete"
+                        onClicked: {
+                            viewModel.deleteData(id)
+                        }
+                    }
                 }
             }
         }

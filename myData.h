@@ -17,6 +17,7 @@ class MyData : public QObject
 public:
     explicit MyData(QObject *parent = nullptr);
     explicit MyData(const int id, const QString val, QObject *parent = nullptr);
+    ~MyData() override;
     QString value();
     void setValue(const QString &val);
     int id();

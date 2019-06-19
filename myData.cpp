@@ -1,5 +1,5 @@
 #include "myData.h"
-
+#include <QDebug>
 MyData::MyData(QObject *parent) : QObject(parent)
 {
 
@@ -11,6 +11,11 @@ MyData::MyData(const int id, const QString val, QObject *parent):
     m_id(id)
 {
 
+}
+
+MyData::~MyData()
+{
+    qDebug()<<"Deletando "<<m_id<<", "<<m_value;
 }
 
 QString MyData::value()

@@ -23,6 +23,7 @@ public:
     void setData(const QList<std::shared_ptr<MyData>> &data);
 
     Q_INVOKABLE void addData(const QString &id, const QString &value);
+    Q_INVOKABLE void deleteData(int id);
 signals:
     void dataChanged();
 public slots:
