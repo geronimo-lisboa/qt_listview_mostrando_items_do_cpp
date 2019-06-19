@@ -2,16 +2,24 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import don.geronimo 1.0
 import QtQuick.Controls 2.3
+import QtQuick.Controls.Material 2.0
 
-Window {
+
+ApplicationWindow {
     visible: true
     width: 640
     height: 480
+    Material.theme: Material.Dark
     title: qsTr("Hello World")
 
     MainViewModel {
         id:viewModel
     }
+
+    Pane {
+
+    }
+
 
     Frame {
         id: frame
