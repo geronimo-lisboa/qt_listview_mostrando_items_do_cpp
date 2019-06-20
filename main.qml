@@ -11,7 +11,8 @@ ApplicationWindow {
     width: 640
     height: 480
     Material.theme: Material.Dark
-    title: qsTr("Hello World")
+    Material.accent: Material.Purple
+    title: qsTr("Exemplo de listview")
 
     MainViewModel {
         id:viewModel
@@ -26,11 +27,12 @@ ApplicationWindow {
             y: 0
 
             RowLayout {
-                TextEdit {
+                TextInput {
                     id: edtId
                     Layout.preferredHeight: 20
                     Layout.preferredWidth: 80
                     font.pixelSize: 12
+                    color: "#bbb"
                     property string placeholder: "Informe o id..."
                     Layout.fillWidth: true
                     Text{
@@ -40,13 +42,14 @@ ApplicationWindow {
                     }
                 }
 
-                TextEdit {
+                TextInput {
                     id: edtValue
                     Layout.preferredHeight: 20
                     Layout.preferredWidth: 80
                     font.pixelSize: 12
                     property string placeholder: "informe o valor..."
                     Layout.fillWidth: true
+                    color: "#bbb"
                     Text{
                         text:edtValue.placeholder
                         color:"#aaa"
@@ -83,13 +86,14 @@ ApplicationWindow {
                         Text {
                             text: id
                             font.pixelSize: 12
-                            Layout.fillWidth: true
-
+                            width: 50
+                            color: "#bbb"
                         }
                         Text {
                             text: value
                             font.pixelSize: 12
                             Layout.fillWidth: true
+                            color: "#bbb"
                         }
                         Button{
                             icon.source: "round_clear_black_18dp.png"
